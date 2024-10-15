@@ -13,6 +13,7 @@ class LoginController extends Controller
         if(Auth::check() == true && Auth::user()->vai_tro == 2){
             return redirect()->route("admin"); //nếu id của Auth > 0 thì chuyển đến giao diện admin
         }
+        // update json login
         return view('admins.components.login', ['title' => 'Login']);
     }
     public function store(FormLoginRequest $request){
