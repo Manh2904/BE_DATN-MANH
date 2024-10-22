@@ -20,7 +20,10 @@ class SanPhamResource extends JsonResource
         return [
             'id_san_pham' => $this->id,
             'name' => $this->ten_san_pham,
-            'ma' => $this->ma_san_pham
+            'ma' => $this->ma_san_pham,
+            'anh_san_pham' => $this->anh_san_pham,
+            'gia' => $this->gia,
+            'so_luong' => $this->so_luong
         ];
     }
 }
