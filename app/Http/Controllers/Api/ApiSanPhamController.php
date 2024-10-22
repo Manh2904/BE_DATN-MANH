@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use App\Http\Resources\SanPhamResource;
 use App\Models\SanPham;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\SanPhamResource;
 
 class ApiSanPhamController extends Controller
 {
@@ -45,13 +45,16 @@ class ApiSanPhamController extends Controller
     public function update(Request $request, string $id)
     {
         //
-    }
-
+    }     
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        $sanPhamTrash = SanPham::find($id);
+        if($sanPhamTrash){
+            $sanPhamTrash->delete();
+            return response()->json(['message' => 'chuyển vào thùng rác thành công'], 201);
+        }
     }
 }

@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\ApiAuthController;
+use App\Http\Controllers\Api\ApiDanhMucController;
+use App\Http\Controllers\Api\ApiLoginController;
 use App\Http\Controllers\Api\ApiSanPhamController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('/login', [ApiAuthController::class, 'login']);
-Route::post('/logout', [ApiAuthController::class, 'logout'])->middleware('auth:sanctum');
-Route::apiResource('apiSanPham', controller: ApiSanPhamController::class)->middleware('auth:sanctum');
+Route::post('/login', [ApiLoginController::class, 'login']);
+Route::post('/logout', [ApiLoginController::class, 'logout'])->middleware('auth:sanctum');
+Route::apiResource('product', controller: ApiSanPhamController::class); 
+Route::apiResource('listproduct', controller: ApiDanhMucController::class); 
